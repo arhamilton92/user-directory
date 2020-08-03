@@ -9,8 +9,7 @@ class App extends Component  {
   state = {
     sortAscending: true,
     employees: [],
-    employeesDefault: [],
-    sortedEmployees: [],
+    filteredEmployees: [],
     search: "",
   }
   
@@ -18,7 +17,6 @@ class App extends Component  {
     axios.get("http://dummy.restapiexample.com/api/v1/employees").then((response) => {
       this.setState({
         employees: response.data.data,
-        employeesDefault: response.data.data,
         filteredEmployees: response.data.data,
       })
     })
@@ -52,7 +50,6 @@ class App extends Component  {
 
   filterEmployees = () => {
     const searchTerm = this.state.search.toLowerCase();
-  
     this.setState({
       employees: this.state.employees.filter((employee) => 
         employee.employee_name.toLowerCase().includes(searchTerm)
