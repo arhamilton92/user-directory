@@ -14,7 +14,7 @@ class App extends Component  {
   }
   
   componentDidMount = () => {
-    axios.get("http://dummy.restapiexample.com/api/v1/employees").then((response) => {
+    axios.get("https://dummy.restapiexample.com/api/v1/employees").then((response) => {
       this.setState({
         employees: response.data.data,
         filteredEmployees: response.data.data,
