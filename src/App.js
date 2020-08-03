@@ -7,28 +7,28 @@ class App extends Component  {
   state = {
     sortAscending: true,
     employees: [],
+    filteredEmployees: [],
   }
-
+  
   componentDidMount = () => {
     axios.get("http://dummy.restapiexample.com/api/v1/employees").then((response) => {
       this.setState({
         employees: response.data.data,
-        filteredEmployees: response.data.data,
       })
-      console.log(this.state.employees)
     })
-    // this.sortEmployees();
+    this.sortEmployees();
   }
 
-  // sortEmployees = () => {
-  //   function compare(a, b) {
-  //     if (a.employee_name > b.employee_name) return 1;
-  //     if (b.employee_name > a.employee_name) return -1;
-  //     return 0;
-  //   }
-  // }
+  sortEmployees = (a, b) => {
+    function compare(a, b) {
+      if (a.employee_name > b.employee_name) return 1;
+      if (b.employee_name > a.employee_name) return -1;
+      return 0;
+    }
+  }
 
   render() {
+    const employees = this.state.employees;
     return (
       <div className="container mt-5">
         <Search />
@@ -45,11 +45,14 @@ class App extends Component  {
                 </tr>{" "}
               </thead>
               <tbody>
-                {this.state.map((list) => (
-                  <tr>
-                    <td>{list.employee_name}</td>
-                  </tr>
-                ))}
+              {employees.map(person => (
+                <tr>
+                  <td>{person.id}</td>
+                  <td>{person.employee_name}</td>
+                  <td>{person.employee_salary}</td>
+                  <td>{person.employee_age}</td>
+                </tr>
+              ))}
               </tbody>
             </table>
           </div>
