@@ -1,33 +1,19 @@
-// import React, { Component } from "react";
+import React, { Component } from "react";
 
-// class EmployeeTable extends React.Component {
-//     render() {
-//     const { data } = this.state;
-    
-//     return (
-//     <div className="row">
-//         <div className="col">
-//         <table className="table">
-//             <thead className="thead-dark">
-//             <tr>
-//                 <th scope="col">ID</th>
-//                 <th scope="col">Name</th>
-//                 <th scope="col">Salary</th>
-//                 <th scope="col">Age</th>
-//             </tr>
-//             </thead>
-//             <tbody>
-//             {data.map(list => (
-// 				<tr>
-//                     <td>{list.employee_name}</td>
-// 				</tr>
-// 			))}
-//             </tbody>
-//         </table>
-//         </div>
-//     </div>
-//     );
-//     }
-// }
+class EmployeeTable extends React.Component {
+    render() {
 
-// export default EmployeeTable;
+    const employees = this.props.data;
+
+    return (
+            <tr>
+                <td>{employees.id}</td>
+                <td>{employees.employee_name}</td>
+                <td>{employees.employee_salary}</td>
+                <td>{employees.employee_age}</td>
+            </tr>
+    );
+    }
+}
+
+export default EmployeeTable;
