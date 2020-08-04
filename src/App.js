@@ -24,7 +24,6 @@ class App extends Component  {
 
   sortEmployees = (field) => {
     function compare(a, b) {
-      console.log("beep")
       if (a[field] > b[field]) return 1;
       if (b[field] > a[field]) return -1;
       return 0;
